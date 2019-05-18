@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -29,8 +30,9 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
     private static final String COLOR_DIALOG = "dialogTagColor", CHOICE_DIALOG = "dialogTagChoice";
     private static final int REQUEST_ENABLE_BT = 1;
     int color = 0xff008577;
-    TextView tvSendColor;
     static TextView tvchat;
+    TextView tvSendColor;
+    FloatingActionButton bluetoothFAB;
     CollapsingToolbarLayout collapsing_toolbar;
     AppBarLayout appbar;
     BluetoothAdapter mBluetoothAdapter;
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
 
         appbar = findViewById(R.id.appbar);
         collapsing_toolbar = findViewById(R.id.collapsing_toolbar);
+
+        bluetoothFAB = findViewById(R.id.bluetoothFAB);
 
         // set name for tool bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -192,12 +196,16 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
 
                 String addressMac = generalInformation.substring(generalInformation.length() - 18); // to get mac address only
                 String mac = addressMac.substring(0,17); // to remove the ] in last from mac address
-                Toast.makeText(this, "You have connected with: " + mac, Toast.LENGTH_LONG).show();
+
                 Log.d(TAG, "You are in CHOICE_DIALOG");
 
-                connectTo = new Connect(MY_UUID , mBluetoothAdapter, mac);
-
-                connectTo.connectDevice();
+               // if (!isFinishing())
+                //{
+                    connectTo = new Connect(MY_UUID, mBluetoothAdapter, mac);
+                    connectTo.connectDevice();
+                    bluetoothFAB.setImageResource(R.drawable.ic_bluetooth_connected_black_24dp);
+                    Toast.makeText(this, "You have connected with: " + mac, Toast.LENGTH_LONG).show();
+               // }
 
             }
 
@@ -208,30 +216,25 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
     }
 
 
+    public void showBluetooth(View view) {
 
-    public void Devices(View view) {
 
         if(Connect.connection())
         {
             connectTo.disConnect();
+            bluetoothFAB.setImageResource(R.drawable.ic_bluetooth_black_24dp);
         }
         else
         {
-            if(!MainActivity.this.isFinishing()) // To avoid this error android.view.WindowManager$BadTokenException
-            {
-                //show dialog
-                SimpleListDialog.build()
-                        .title("Device")
-                        .choiceMode(SimpleListDialog.SINGLE_CHOICE_DIRECT)
-                        .items(all.devices())
-                        .show(this, CHOICE_DIALOG);
-            }
+            //show dialog
+            SimpleListDialog.build()
+                    .title("Device")
+                    .choiceMode(SimpleListDialog.SINGLE_CHOICE_DIRECT)
+                    .items(all.devices())
+                    .show(this, CHOICE_DIALOG);
 
         }
 
 
     }
-
-
-
 }

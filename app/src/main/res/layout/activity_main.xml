@@ -53,6 +53,9 @@
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right"
         app:layout_collapseMode="pin"
+        android:onClick="showBluetooth"
+        android:src="@drawable/ic_bluetooth_black_24dp"
+        android:id="@+id/bluetoothFAB"
         />
 
     <android.support.design.widget.FloatingActionButton
@@ -64,7 +67,7 @@
         app:layout_collapseMode="pin"
         android:onClick="showColorPicker"
         android:src="@drawable/ic_color_lens_black_24dp"
-        />
+        tools:ignore="RtlHardcoded" />
 
 
     <android.support.v4.widget.NestedScrollView
@@ -87,16 +90,6 @@
                 android:text="chat"
                 android:textColor="#000000"
                 android:id="@+id/tvchat"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Devices"
-                android:onClick="Devices"/>
-
-
-
-
-
 
 
 
