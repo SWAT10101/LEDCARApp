@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.ledcar.MainActivity">
-
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -16,25 +16,24 @@
         android:fitsSystemWindows="true"
         >
 
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             android:fitsSystemWindows="true"
             app:expandedTitleMarginStart="40dp"
-            app:contentScrim="@color/colorPrimary">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <TextView
                 android:id="@+id/tvSendColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Color Code"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000"
                 android:layout_gravity="center_vertical |center_horizontal"
-                />
+                android:text="Color Code"
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
 
             <android.support.v7.widget.Toolbar
@@ -46,29 +45,18 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="bottom|right"
-        app:layout_collapseMode="pin"
-        android:onClick="showBluetooth"
-        android:src="@drawable/ic_bluetooth_black_24dp"
-        android:id="@+id/bluetoothFAB"
-        />
+
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="75dp"
+        android:layout_marginRight="16dp"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right"
         app:layout_collapseMode="pin"
         android:onClick="showColorPicker"
         android:src="@drawable/ic_color_lens_black_24dp"
         tools:ignore="RtlHardcoded" />
-
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -80,30 +68,103 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
 
 
 
-            <TextView
-                android:layout_width="wrap_content"
+            <android.support.design.card.MaterialCardView
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="chat"
-                android:textColor="#000000"
-                android:id="@+id/tvchat"/>
+                android:layout_margin="5dp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Connection"
+                        android:layout_margin="3dp"
+                        android:textColor="#000"/>
+
+
+                    <android.support.design.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                        android:id="@+id/material_button_Bluetooth"
+                        android:layout_margin="3dp"
+                        android:textColor="@color/primaryText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bluetooth"
+                        android:onClick="showBluetooth"
+                        app:icon="@drawable/ic_bluetooth_black_24dp"
+                        app:strokeColor="@color/colorAccent"
+                        app:iconTint="@color/iconButton"/>
+
+
+
+                </LinearLayout>
+
+
+            </android.support.design.card.MaterialCardView>
+
+
+
+            <android.support.design.card.MaterialCardView
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:text="LED color in car"
+                                android:textColor="#000" />
+
+                            <TextView
+                                android:id="@+id/tvchat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:text="TEST"
+                                android:textColor="#000" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/ivLED"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/ic_led"
+                            android:layout_alignParentEnd="true"/>
+
+                    </RelativeLayout>
 
 
 
 
+            </android.support.design.card.MaterialCardView>
         </LinearLayout>
 
 
-
-
-
-
     </android.support.v4.widget.NestedScrollView>
-
-
 
 
 

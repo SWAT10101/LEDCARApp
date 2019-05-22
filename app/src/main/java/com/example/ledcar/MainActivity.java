@@ -1,25 +1,25 @@
 package com.example.ledcar;
 
 
-import android.app.Activity;
+
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.button.MaterialButton;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.AndroidException;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.UUID;
 import eltos.simpledialogfragment.color.SimpleColorDialog;
 import eltos.simpledialogfragment.list.SimpleListDialog;
@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
     int color = 0xff008577;
     static TextView tvchat;
     TextView tvSendColor;
-    FloatingActionButton bluetoothFAB;
+    ImageView ivLED;
+    MaterialButton material_button_Bluetooth;
     CollapsingToolbarLayout collapsing_toolbar;
     AppBarLayout appbar;
     BluetoothAdapter mBluetoothAdapter;
@@ -62,7 +63,9 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         appbar = findViewById(R.id.appbar);
         collapsing_toolbar = findViewById(R.id.collapsing_toolbar);
 
-        bluetoothFAB = findViewById(R.id.bluetoothFAB);
+        material_button_Bluetooth = findViewById(R.id.material_button_Bluetooth);
+
+        ivLED = findViewById(R.id.ivLED);
 
         // set name for tool bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -134,6 +137,9 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         collapsing_toolbar.setContentScrimColor(barColor);
 
 
+        ivLED.setColorFilter(barColor);//----------------------------------------------------------->> not here color reciveed from ardinou
+
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             float[] hsv = new float[3];
@@ -203,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
                 //{
                     connectTo = new Connect(MY_UUID, mBluetoothAdapter, mac);
                     connectTo.connectDevice();
-                    bluetoothFAB.setImageResource(R.drawable.ic_bluetooth_connected_black_24dp);
+                    material_button_Bluetooth.setIconResource(R.drawable.ic_bluetooth_connected_black_24dp);
                     Toast.makeText(this, "You have connected with: " + mac, Toast.LENGTH_LONG).show();
                // }
 
@@ -222,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         if(Connect.connection())
         {
             connectTo.disConnect();
-            bluetoothFAB.setImageResource(R.drawable.ic_bluetooth_black_24dp);
+            material_button_Bluetooth.setIconResource(R.drawable.ic_bluetooth_black_24dp);
         }
         else
         {
