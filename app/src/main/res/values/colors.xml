@@ -5,4 +5,22 @@
     <color name="colorAccent">#D81B60</color>
     <color name="primaryText">#212121</color>
     <color name="iconButton">#757575</color>
+
+    <color name="red">#ff0000</color>
+    <color name="orange">#ff8000</color>
+    <color name="yellow">#ffe100</color>
+    <color name="blue">#0000ff</color>
+    <color name="whiteBlue">#00ffaa</color>
+    <color name="lightBlue">#00d5ff</color>
+    <color name="closetoBlue">#0056ff</color>
+    <color name="Purple">#8000ff</color>
+    <color name="bluishPurple">#5500ff</color>
+    <color name="closetoPink">#D500FF</color>
+    <color name="whitePink">#FF00AB</color>
+    <color name="pink">#FF0056</color>
+    <color name="green">#00FF00</color>
+    <color name="whiteGreen">#ABFF00</color>
+    <color name="bluishGreen">#00FF2B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

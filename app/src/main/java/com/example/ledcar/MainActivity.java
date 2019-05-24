@@ -2,8 +2,11 @@ package com.example.ledcar;
 
 
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -14,9 +17,9 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.AndroidException;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,10 +33,10 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
     private static final String COLOR_DIALOG = "dialogTagColor", CHOICE_DIALOG = "dialogTagChoice";
     private static final int REQUEST_ENABLE_BT = 1;
     int color = 0xff008577;
-    static TextView tvchat;
+    public static TextView tvchat;
     TextView tvSendColor;
     ImageView ivLED;
-    MaterialButton material_button_Bluetooth;
+    MaterialButton material_button_Bluetooth, riandowBT, fradRed, police;
     CollapsingToolbarLayout collapsing_toolbar;
     AppBarLayout appbar;
     BluetoothAdapter mBluetoothAdapter;
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         collapsing_toolbar = findViewById(R.id.collapsing_toolbar);
 
         material_button_Bluetooth = findViewById(R.id.material_button_Bluetooth);
+        riandowBT = findViewById(R.id.riandowBT);
+        fradRed =findViewById(R.id.fradRed);
+        police = findViewById(R.id.police);
 
         ivLED = findViewById(R.id.ivLED);
 
@@ -87,10 +93,102 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
             }
         }
 
+        riandowColorAnmtion(riandowBT);
+        feadAnmtion(fradRed, R.color.red, R.color.black, R.color.red, 15000);
+        policeAnmtion(police);
+
 
 
     }
 
+
+    // Riandow Amntion
+    private void riandowColorAnmtion(final MaterialButton MTB)
+    {
+
+        int red = getResources().getColor(R.color.red);
+        int orange = getResources().getColor(R.color.orange);
+        int yellow = getResources().getColor(R.color.yellow);
+        int whiteGreen = getResources().getColor(R.color.whiteGreen);
+        int bluishGreen = getResources().getColor(R.color.bluishGreen);
+        int green = getResources().getColor(R.color.green);
+        int lightBlue = getResources().getColor(R.color.lightBlue);
+        int whiteBlue = getResources().getColor(R.color.whiteBlue);
+        int closetoBlue = getResources().getColor(R.color.closetoBlue);
+        int blue = getResources().getColor(R.color.blue);
+        int Purple = getResources().getColor(R.color.Purple);
+        int bluishPurple = getResources().getColor(R.color.bluishPurple);
+        int closetoPink = getResources().getColor(R.color.closetoPink);
+        int pink = getResources().getColor(R.color.pink);
+        int red2 = getResources().getColor(R.color.red);
+
+
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), red, orange,
+                yellow, whiteGreen, bluishGreen, green, lightBlue, whiteBlue, closetoBlue, blue, Purple, bluishPurple, closetoPink, pink, red2);
+
+
+        colorAnimation.setDuration(30000); // milliseconds
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                MTB.setBackgroundTintList(ColorStateList.valueOf((int) animator.getAnimatedValue()));
+                Log.d(TAG, animator.getAnimatedValue() + "");
+            }
+        });
+
+        colorAnimation.setRepeatCount(Animation.INFINITE);
+        colorAnimation.start();
+    }
+
+    private void feadAnmtion(final MaterialButton MTB , int firstColor, int scoundColor, int thiedColor, int speed)
+    {
+        int f = getResources().getColor(firstColor);
+        int s = getResources().getColor(scoundColor);
+        int t = getResources().getColor(thiedColor);
+
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), f, s, t);
+
+
+        colorAnimation.setDuration(speed); // milliseconds
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                MTB.setBackgroundTintList(ColorStateList.valueOf((int) animator.getAnimatedValue()));
+                Log.d(TAG, animator.getAnimatedValue() + "");
+            }
+        });
+
+        colorAnimation.setRepeatCount(Animation.INFINITE);
+        colorAnimation.start();
+
+    }
+
+    private void policeAnmtion(final MaterialButton MTB)
+    {
+        int k = getResources().getColor(R.color.black);
+        int r = getResources().getColor(R.color.red);
+        int w = getResources().getColor(R.color.white);
+        int b = getResources().getColor(R.color.blue);
+
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), k, r, k, r, k, r, w, k, k, b, k, b, k, b);
+
+
+        colorAnimation.setDuration(900); // milliseconds
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                MTB.setBackgroundTintList(ColorStateList.valueOf((int) animator.getAnimatedValue()));
+                Log.d(TAG, animator.getAnimatedValue() + "");
+            }
+        });
+
+        colorAnimation.setRepeatCount(Animation.INFINITE);
+        colorAnimation.start();
+
+    }
 
 
     @Override
