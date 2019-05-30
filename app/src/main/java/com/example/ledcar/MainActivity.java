@@ -3,26 +3,35 @@ package com.example.ledcar;
 
 
 import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
+
+import android.os.Bundle;
+
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.button.MaterialButton;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+
 import java.util.UUID;
 import eltos.simpledialogfragment.color.SimpleColorDialog;
 import eltos.simpledialogfragment.list.SimpleListDialog;
@@ -36,9 +45,14 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
     public static TextView tvchat;
     TextView tvSendColor;
     ImageView ivLED;
-    MaterialButton material_button_Bluetooth, riandowBT, fradRed, police;
+
+    MaterialButton material_button_Bluetooth, riandowBT, fradRed, fradOrange, fradYellow, fradBlue, fradWhiteBlue,
+                   fradLightBlue, fradClosetoBlue, fradPurple, fradBluishPurple, fradClosetoPink,
+                   fradWhitePink, fradPink, fradGreen, fradWhiteGreen, fradWhite, police;
+
     CollapsingToolbarLayout collapsing_toolbar;
     AppBarLayout appbar;
+    Toolbar toolbar;
     BluetoothAdapter mBluetoothAdapter;
 
 
@@ -50,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
 
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,20 +83,36 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
 
         material_button_Bluetooth = findViewById(R.id.material_button_Bluetooth);
         riandowBT = findViewById(R.id.riandowBT);
-        fradRed =findViewById(R.id.fradRed);
         police = findViewById(R.id.police);
+        fradRed =findViewById(R.id.fradRed);
+        fradOrange = findViewById(R.id.fradOrange);
+        fradYellow = findViewById(R.id.fradYellow);
+        fradBlue = findViewById(R.id.fradBlue);
+        fradWhiteBlue = findViewById(R.id.fradWhiteBlue);
+        fradLightBlue = findViewById(R.id.fradLightBlue);
+        fradClosetoBlue = findViewById(R.id.fradClosetoBlue);
+        fradPurple = findViewById(R.id.fradPurple);
+        fradBluishPurple = findViewById(R.id.fradBluishPurple);
+        fradClosetoPink = findViewById(R.id.fradClosetoPink);
+        fradWhitePink = findViewById(R.id.fradWhitePink);
+        fradPink = findViewById(R.id.fradPink);
+        fradGreen = findViewById(R.id.fradGreen);
+        fradWhiteGreen = findViewById(R.id.fradWhiteGreen);
+        fradWhite = findViewById(R.id.fradWhite);
+
+
 
         ivLED = findViewById(R.id.ivLED);
 
         // set name for tool bar
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Car LED");
 
 
         if(mBluetoothAdapter == null){
             Log.d(TAG, "enableDisableBT: Does not have BT capabilities.");
             Toast.makeText(this, "enableDisableBT: Does not have Bluetooth capabilities.", Toast.LENGTH_LONG).show();
-            finish();
+            //finish();
         }
         else
         {
@@ -94,12 +125,32 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         }
 
         riandowColorAnmtion(riandowBT);
-        feadAnmtion(fradRed, R.color.red, R.color.black, R.color.red, 15000);
+
+        feadAnmtion(fradRed, R.color.red, R.color.red);
+        feadAnmtion(fradOrange, R.color.orange, R.color.orange);
+        feadAnmtion(fradYellow, R.color.yellow, R.color.yellow);
+        feadAnmtion(fradWhiteGreen, R.color.whiteGreen, R.color.whiteGreen);
+        feadAnmtion(fradGreen, R.color.green, R.color.green);
+        feadAnmtion(fradWhiteBlue, R.color.whiteBlue, R.color.whiteBlue);
+        feadAnmtion(fradLightBlue, R.color.lightBlue, R.color.lightBlue);
+        feadAnmtion(fradClosetoBlue, R.color.closetoBlue, R.color.closetoBlue);
+        feadAnmtion(fradBlue, R.color.blue, R.color.blue);
+        feadAnmtion(fradBluishPurple, R.color.bluishPurple, R.color.bluishPurple);
+        feadAnmtion(fradPurple, R.color.Purple, R.color.Purple);
+        feadAnmtion(fradClosetoPink, R.color.closetoPink, R.color.closetoPink);
+        feadAnmtion(fradWhitePink, R.color.whitePink, R.color.whitePink);
+        feadAnmtion(fradPink, R.color.pink, R.color.pink);
+        feadAnmtion(fradWhite, R.color.white, R.color.white);
+
         policeAnmtion(police);
 
 
 
+
+
     }
+
+
 
 
     // Riandow Amntion
@@ -110,7 +161,6 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         int orange = getResources().getColor(R.color.orange);
         int yellow = getResources().getColor(R.color.yellow);
         int whiteGreen = getResources().getColor(R.color.whiteGreen);
-        int bluishGreen = getResources().getColor(R.color.bluishGreen);
         int green = getResources().getColor(R.color.green);
         int lightBlue = getResources().getColor(R.color.lightBlue);
         int whiteBlue = getResources().getColor(R.color.whiteBlue);
@@ -124,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
 
 
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), red, orange,
-                yellow, whiteGreen, bluishGreen, green, lightBlue, whiteBlue, closetoBlue, blue, Purple, bluishPurple, closetoPink, pink, red2);
+                yellow, whiteGreen, green, lightBlue, whiteBlue, closetoBlue, blue, Purple, bluishPurple, closetoPink, pink, red2);
 
 
         colorAnimation.setDuration(30000); // milliseconds
@@ -133,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 MTB.setBackgroundTintList(ColorStateList.valueOf((int) animator.getAnimatedValue()));
-                Log.d(TAG, animator.getAnimatedValue() + "");
             }
         });
 
@@ -141,22 +190,21 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         colorAnimation.start();
     }
 
-    private void feadAnmtion(final MaterialButton MTB , int firstColor, int scoundColor, int thiedColor, int speed)
+    private void feadAnmtion(final MaterialButton MTB, int firstColor, int thiedColor)
     {
         int f = getResources().getColor(firstColor);
-        int s = getResources().getColor(scoundColor);
+        int s = getResources().getColor(R.color.black);
         int t = getResources().getColor(thiedColor);
 
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), f, s, t);
 
 
-        colorAnimation.setDuration(speed); // milliseconds
+        colorAnimation.setDuration(10000); // milliseconds
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 MTB.setBackgroundTintList(ColorStateList.valueOf((int) animator.getAnimatedValue()));
-                Log.d(TAG, animator.getAnimatedValue() + "");
             }
         });
 
@@ -175,13 +223,12 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), k, r, k, r, k, r, w, k, k, b, k, b, k, b);
 
 
-        colorAnimation.setDuration(900); // milliseconds
+        colorAnimation.setDuration(1100); // milliseconds
         colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
                 MTB.setBackgroundTintList(ColorStateList.valueOf((int) animator.getAnimatedValue()));
-                Log.d(TAG, animator.getAnimatedValue() + "");
             }
         });
 
@@ -261,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
               String hexColor = String.format("#%06X", (0xFFFFFF & extras.getInt(SimpleColorDialog.COLOR)));
 
 
-                // == To get RGB color value ==
+                // == To get RGB color value ======================================
                 int r = Integer.valueOf( hexColor.substring( 1, 3 ), 16 );
                 int g = Integer.valueOf( hexColor.substring( 3, 5 ), 16 );
                 int b = Integer.parseInt( hexColor.substring( 5, 7 ), 16 );
@@ -270,11 +317,15 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
                 if (a < 0.5)
                 {
                    tvSendColor.setTextColor(Color.BLACK);
+                   collapsing_toolbar.setCollapsedTitleTextColor(Color.BLACK);
+                   collapsing_toolbar.setExpandedTitleColor(Color.BLACK);
                 } else
                 {
                     tvSendColor.setTextColor(Color.WHITE);
+                    collapsing_toolbar.setCollapsedTitleTextColor(Color.WHITE);
+                    collapsing_toolbar.setExpandedTitleColor(Color.WHITE);
                 }
-                //------------------------
+                //-----------------------------------------------------------------------------
 
 
               tvSendColor.setText(hexColor);

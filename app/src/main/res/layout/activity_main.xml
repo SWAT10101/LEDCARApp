@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ledcar.MainActivity">
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="256dp"
+        android:layout_height="250dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -20,15 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:expandedTitleMarginStart="40dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <TextView
                 android:id="@+id/tvSendColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical |center_horizontal"
-                android:text="Color Code"
+                android:text="@string/color_code"
                 android:textColor="#000"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -37,7 +38,8 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -52,19 +54,18 @@
         android:src="@drawable/ic_color_lens_black_24dp"
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|right"
-        app:layout_collapseMode="pin"
         tools:ignore="RtlHardcoded" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="60dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
@@ -73,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -84,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
-                        android:text="Connection"
+                        android:text="@string/connection"
                         android:textColor="#000" />
 
 
@@ -95,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
                         android:onClick="showBluetooth"
-                        android:text="Bluetooth"
+                        android:text="@string/bluetooth"
                         android:textColor="@color/primaryText"
                         app:icon="@drawable/ic_bluetooth_black_24dp"
                         app:iconTint="@color/iconButton"
@@ -114,22 +115,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="8dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        tools:ignore="RelativeOverlap">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="3dp"
-                            android:text="LED color in car"
+                            android:text="@string/led_color_in_car"
                             android:textColor="#000" />
 
                         <TextView
@@ -141,11 +144,13 @@
 
                     </LinearLayout>
 
+
                     <ImageView
                         android:id="@+id/ivLED"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_alignParentEnd="true"
+                        android:contentDescription="@string/todo"
                         android:src="@drawable/ic_led" />
 
                 </RelativeLayout>
@@ -153,12 +158,14 @@
 
             </android.support.design.card.MaterialCardView>
 
+
             <android.support.design.card.MaterialCardView
                 style="@style/Widget.MaterialComponents.CardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="8dp">
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -169,7 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="3dp"
-                        android:text="Animation"
+                        android:text="@string/animation"
                         android:textColor="#000" />
 
 
@@ -187,13 +194,6 @@
                                 android:layout_weight="1" />
 
                             <android.support.design.button.MaterialButton
-                                android:id="@+id/fradRed"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="3dp"
-                                android:layout_weight="1" />
-
-                            <android.support.design.button.MaterialButton
                                 android:id="@+id/police"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -203,13 +203,168 @@
 
                         </TableRow>
 
-                    </TableLayout>
+                        <TableRow>
 
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradRed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1"
+                                 />
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradOrange"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1"/>
+
+
+
+                        </TableRow>
+
+                        <TableRow>
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradYellow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradWhiteGreen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                        </TableRow>
+
+                        <TableRow>
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradGreen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradWhiteBlue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+
+                        </TableRow>
+
+                        <TableRow>
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradLightBlue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradClosetoBlue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                        </TableRow>
+
+                        <TableRow>
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradBlue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradBluishPurple"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+
+
+                        </TableRow>
+
+                        <TableRow>
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradPurple"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradClosetoPink"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                        </TableRow>
+
+                        <TableRow>
+
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradWhitePink"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradPink"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1" />
+
+
+
+
+                        </TableRow>
+
+                        <TableRow>
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradWhite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1"/>
+
+                            <android.support.design.button.MaterialButton
+                                android:id="@+id/fradBlack"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:layout_weight="1"
+                                android:text="@string/off"
+                                android:backgroundTint="@color/black"/>
+
+                        </TableRow>
+
+
+                    </TableLayout>
 
                 </LinearLayout>
 
 
             </android.support.design.card.MaterialCardView>
+
+
         </LinearLayout>
 
 

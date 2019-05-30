@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">LED CAR</string>
+    <string name="animation">Animation</string>
+    <string name="todo">TODO</string>
+    <string name="color_code">Color Code</string>
+    <string name="connection">Connection</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="led_color_in_car">LED color in car</string>
+    <string name="off">OFF</string>
 </resources>
