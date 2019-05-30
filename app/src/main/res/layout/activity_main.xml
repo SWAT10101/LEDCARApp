@@ -211,14 +211,17 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
                                 android:layout_weight="1"
-                                 />
+                                android:backgroundTint="@color/red"
+                                tools:ignore="UnusedAttribute" />
 
                             <android.support.design.button.MaterialButton
                                 android:id="@+id/fradOrange"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/orange"
+                                tools:ignore="UnusedAttribute" />
 
 
 
@@ -231,14 +234,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/yellow"
+                                tools:ignore="UnusedAttribute" />
 
                             <android.support.design.button.MaterialButton
                                 android:id="@+id/fradWhiteGreen"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/whiteGreen"
+                                tools:ignore="UnusedAttribute" />
 
                         </TableRow>
 
@@ -249,14 +256,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/green"
+                                tools:ignore="UnusedAttribute" />
 
                             <android.support.design.button.MaterialButton
                                 android:id="@+id/fradWhiteBlue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/whiteBlue"
+                                tools:ignore="UnusedAttribute" />
 
 
                         </TableRow>
@@ -267,14 +278,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/lightBlue"
+                                tools:ignore="UnusedAttribute" />
 
                             <android.support.design.button.MaterialButton
                                 android:id="@+id/fradClosetoBlue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/closetoBlue"
+                                tools:ignore="UnusedAttribute" />
 
                         </TableRow>
 
@@ -285,14 +300,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/blue"
+                                tools:ignore="UnusedAttribute" />
 
                             <android.support.design.button.MaterialButton
                                 android:id="@+id/fradBluishPurple"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/bluishPurple"
+                                tools:ignore="UnusedAttribute" />
 
 
 
@@ -304,14 +323,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/Purple"
+                                tools:ignore="UnusedAttribute" />
 
                             <android.support.design.button.MaterialButton
                                 android:id="@+id/fradClosetoPink"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/closetoPink"
+                                tools:ignore="UnusedAttribute" />
 
                         </TableRow>
 
@@ -323,14 +346,18 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/whitePink"
+                                tools:ignore="UnusedAttribute" />
 
                             <android.support.design.button.MaterialButton
                                 android:id="@+id/fradPink"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/pink"
+                                tools:ignore="UnusedAttribute" />
 
 
 
@@ -343,7 +370,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-                                android:layout_weight="1"/>
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/white"
+                                tools:ignore="UnusedAttribute" />
 
                             <android.support.design.button.MaterialButton
                                 android:id="@+id/fradBlack"
@@ -352,7 +381,8 @@
                                 android:layout_margin="3dp"
                                 android:layout_weight="1"
                                 android:text="@string/off"
-                                android:backgroundTint="@color/black"/>
+                                android:backgroundTint="@color/black"
+                                tools:ignore="UnusedAttribute" />
 
                         </TableRow>
 

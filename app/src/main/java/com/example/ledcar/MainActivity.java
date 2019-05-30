@@ -126,23 +126,39 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
 
         riandowColorAnmtion(riandowBT);
 
-        feadAnmtion(fradRed, R.color.red, R.color.red);
-        feadAnmtion(fradOrange, R.color.orange, R.color.orange);
-        feadAnmtion(fradYellow, R.color.yellow, R.color.yellow);
-        feadAnmtion(fradWhiteGreen, R.color.whiteGreen, R.color.whiteGreen);
-        feadAnmtion(fradGreen, R.color.green, R.color.green);
-        feadAnmtion(fradWhiteBlue, R.color.whiteBlue, R.color.whiteBlue);
-        feadAnmtion(fradLightBlue, R.color.lightBlue, R.color.lightBlue);
-        feadAnmtion(fradClosetoBlue, R.color.closetoBlue, R.color.closetoBlue);
-        feadAnmtion(fradBlue, R.color.blue, R.color.blue);
-        feadAnmtion(fradBluishPurple, R.color.bluishPurple, R.color.bluishPurple);
-        feadAnmtion(fradPurple, R.color.Purple, R.color.Purple);
-        feadAnmtion(fradClosetoPink, R.color.closetoPink, R.color.closetoPink);
-        feadAnmtion(fradWhitePink, R.color.whitePink, R.color.whitePink);
-        feadAnmtion(fradPink, R.color.pink, R.color.pink);
-        feadAnmtion(fradWhite, R.color.white, R.color.white);
-
         policeAnmtion(police);
+
+
+        fradRed.post(new Runnable() {
+            @Override
+            public void run() {
+                //set the animation on Button
+                Animation anim = new AlphaAnimation(0.0f, 1.0f);
+
+
+                anim.setDuration(2000); //You can manage the time of the blink with this parameter
+                anim.setStartOffset(20);
+                anim.setRepeatMode(Animation.REVERSE);
+                anim.setRepeatCount(Animation.INFINITE);
+
+
+                fradRed.startAnimation(anim);
+                fradOrange.startAnimation(anim);
+                fradYellow.startAnimation(anim);
+                fradWhiteGreen.setAnimation(anim);
+                fradGreen.setAnimation(anim);
+                fradWhiteBlue.startAnimation(anim);
+                fradLightBlue.startAnimation(anim);
+                fradClosetoBlue.startAnimation(anim);
+                fradBlue.startAnimation(anim);
+                fradBluishPurple.startAnimation(anim);
+                fradPurple.setAnimation(anim);
+                fradClosetoPink.startAnimation(anim);
+                fradWhitePink.startAnimation(anim);
+                fradPink.startAnimation(anim);
+                fradWhite.startAnimation(anim);
+            }
+        });
 
 
 
@@ -190,28 +206,6 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         colorAnimation.start();
     }
 
-    private void feadAnmtion(final MaterialButton MTB, int firstColor, int thiedColor)
-    {
-        int f = getResources().getColor(firstColor);
-        int s = getResources().getColor(R.color.black);
-        int t = getResources().getColor(thiedColor);
-
-        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), f, s, t);
-
-
-        colorAnimation.setDuration(10000); // milliseconds
-        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                MTB.setBackgroundTintList(ColorStateList.valueOf((int) animator.getAnimatedValue()));
-            }
-        });
-
-        colorAnimation.setRepeatCount(Animation.INFINITE);
-        colorAnimation.start();
-
-    }
 
     private void policeAnmtion(final MaterialButton MTB)
     {
