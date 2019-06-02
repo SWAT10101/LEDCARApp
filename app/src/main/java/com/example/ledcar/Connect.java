@@ -5,10 +5,10 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -98,7 +98,22 @@ public class Connect {
             if(msg.what == 0)
             {
                 String message = (String) msg.obj;
-                MainActivity.tvchat.setText(message);
+
+
+                 String color = message.substring(12, 19); // To get hex color code from bluetooth
+                 Log.d(TAG, color.startsWith("#") + "");
+                 Log.d(TAG, color + "");
+
+                 if(color.startsWith("#"))
+                 {
+                     MainActivity.ivLED.setColorFilter(Color.parseColor(color)); // set color to image view
+                 }
+                 else
+                 {
+                     MainActivity.ivLED.setColorFilter(Color.BLACK); // set color to image view
+                 }
+
+                 MainActivity.tvRecive.setText(message);
             }
 
 

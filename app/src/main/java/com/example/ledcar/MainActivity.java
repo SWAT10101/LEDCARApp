@@ -3,7 +3,6 @@ package com.example.ledcar;
 
 
 import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
@@ -11,9 +10,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
-
 import android.os.Bundle;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.button.MaterialButton;
@@ -25,13 +22,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-
 import java.util.UUID;
 import eltos.simpledialogfragment.color.SimpleColorDialog;
 import eltos.simpledialogfragment.list.SimpleListDialog;
@@ -42,9 +35,12 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
     private static final String COLOR_DIALOG = "dialogTagColor", CHOICE_DIALOG = "dialogTagChoice";
     private static final int REQUEST_ENABLE_BT = 1;
     int color = 0xff008577;
-    public static TextView tvchat;
     TextView tvSendColor;
-    ImageView ivLED;
+
+    @SuppressLint("StaticFieldLeak")
+    public static TextView tvRecive;
+    @SuppressLint("StaticFieldLeak")
+    public static ImageView ivLED;
 
     MaterialButton material_button_Bluetooth, riandowBT, fradRed, fradOrange, fradYellow, fradBlue, fradWhiteBlue,
                    fradLightBlue, fradClosetoBlue, fradPurple, fradBluishPurple, fradClosetoPink,
@@ -74,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         all = new PriedDevices(mBluetoothAdapter);
 
 
-        tvchat = findViewById(R.id.tvchat);
+        tvRecive = findViewById(R.id.tvchat);
         tvSendColor = findViewById(R.id.tvSendColor);
 
 
@@ -135,12 +131,10 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
                 //set the animation on Button
                 Animation anim = new AlphaAnimation(0.0f, 1.0f);
 
-
                 anim.setDuration(2000); //You can manage the time of the blink with this parameter
                 anim.setStartOffset(20);
                 anim.setRepeatMode(Animation.REVERSE);
                 anim.setRepeatCount(Animation.INFINITE);
-
 
                 fradRed.startAnimation(anim);
                 fradOrange.startAnimation(anim);
@@ -159,10 +153,6 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
                 fradWhite.startAnimation(anim);
             }
         });
-
-
-
-
 
     }
 
@@ -275,11 +265,6 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         appbar.setBackgroundColor(barColor);
         collapsing_toolbar.setContentScrimColor(barColor);
 
-
-        ivLED.setColorFilter(barColor);//----------------------------------------------------------->> not here color reciveed from ardinou
-
-
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             float[] hsv = new float[3];
             Color.colorToHSV(color, hsv);
@@ -325,7 +310,7 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
               tvSendColor.setText(hexColor);
 
               Log.d(TAG, "You are in color dialog");
-              Connect.ConnectedThread.thaySend( tvSendColor.getText().toString());
+              Connect.ConnectedThread.thaySend(   tvSendColor.getText().toString()  + " 0");   // send color + mode number
               return true;
             }
             else
@@ -348,13 +333,12 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
 
                 Log.d(TAG, "You are in CHOICE_DIALOG");
 
-               // if (!isFinishing())
-                //{
+
                     connectTo = new Connect(MY_UUID, mBluetoothAdapter, mac);
                     connectTo.connectDevice();
                     material_button_Bluetooth.setIconResource(R.drawable.ic_bluetooth_connected_black_24dp);
                     Toast.makeText(this, "You have connected with: " + mac, Toast.LENGTH_LONG).show();
-               // }
+
 
             }
 
@@ -385,5 +369,19 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
         }
 
 
+    }
+
+
+    public void mbRianDow(View view) {
+
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( "No color 19");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
     }
 }
