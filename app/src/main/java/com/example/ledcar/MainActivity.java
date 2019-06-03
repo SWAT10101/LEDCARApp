@@ -384,4 +384,215 @@ public class MainActivity extends AppCompatActivity implements  SimpleColorDialo
             Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
         }
     }
+
+    public void mbPolice(View view) {
+
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( "No color 18");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadRed(View view) {
+
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.red))) + " 1");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadOrange(View view) {
+
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.orange))) + " 2");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadYellow(View view) {
+
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.yellow))) + " 3");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadWhiteGreen(View view) {
+
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.whiteGreen))) + " 4");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    public void mbFeadGreen(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.green))) + " 5");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadWhiteBlue(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.whiteBlue))) + " 6");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadLightBlue(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.lightBlue))) + " 7");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadClosetoBlue(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.closetoBlue))) + " 8");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadBlue(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.blue))) + " 9");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadBluishPurple(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.bluishPurple))) + " 10");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadPurple(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.Purple))) + " 11");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadClosetoPink(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.closetoPink))) + " 12");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadWhitePink(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.whitePink))) + " 13");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadPink(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.pink))) + " 14");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbFeadWhite(View view) {
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.white))) + " 15");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void mbOff(View view) {
+
+        if(Connect.connection())
+        {
+            Connect.ConnectedThread.thaySend( String.format("#%06X", (0xFFFFFF & getResources().getColor( R.color.black))) + " 16");   // send color + mode number
+
+        }
+        else
+        {
+            Toast.makeText(this, "Connect to Device first", Toast.LENGTH_LONG).show();
+        }
+    }
 }
