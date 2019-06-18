@@ -1,3 +1,3 @@
 # LEDCARApp
 
-## This app for control LED color controlled by arduino using bluetooth.
+## This app for control LED color controlled by arduino using bluetooth (HC-06).
